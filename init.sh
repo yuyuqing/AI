@@ -57,6 +57,10 @@ git remote rm Origin-AI
 
 git clone git@github.com:yuyuqing/AI.git
 
+//git branch -b (-b : create a branch and change to the branch)
+git branch -b dev
+git branch
+
 
 //-----------------------------------------------------------------------------------------------
 //git command tutorials end
