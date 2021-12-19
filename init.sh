@@ -47,6 +47,8 @@ git reflog
 git checkout -- file_xxx
 git rm file_xxx
 
+ssh-keygen -t  rsa -C "lvyijiu@icloud.com"
+
 git remote add Origin-AI git@github.com:yuyuqing/AI.git
 git push -u Origin-AI master
 git push Origin-AI master
