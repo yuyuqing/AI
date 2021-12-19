@@ -62,6 +62,7 @@ git branch -b dev
 git branch
 git merge dev
 git branch -d dev
+git switch -c dev
 
 
 //-----------------------------------------------------------------------------------------------
