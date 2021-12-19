@@ -38,6 +38,7 @@ git commit -m "Wrote or Updated a file"
 git status
 git diff file_xxx
 
+git log --pretty=oneline
 
 //-----------------------------------------------------------------------------------------------
 //git command tutorials end
