@@ -39,6 +39,10 @@ git status
 git diff file_xxx
 
 git log --pretty=oneline
+git reset --hard HEAD^
+git reset --hard xxxx
+git reset --hadr HEAD~num
+git reflog
 
 //-----------------------------------------------------------------------------------------------
 //git command tutorials end
