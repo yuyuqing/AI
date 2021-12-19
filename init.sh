@@ -61,6 +61,7 @@ git clone git@github.com:yuyuqing/AI.git
 git branch -b dev
 git branch
 git merge dev
+git branch -d dev
 
 
 //-----------------------------------------------------------------------------------------------
