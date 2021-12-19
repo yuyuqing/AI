@@ -53,6 +53,9 @@ git push Origin-AI master
 git remote -v
 git remote rm Origin-AI
 
+git clone git@github.com:yuyuqing/AI.git
+
+
 //-----------------------------------------------------------------------------------------------
 //git command tutorials end
 
