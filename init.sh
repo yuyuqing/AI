@@ -45,6 +45,8 @@ git reset --hadr HEAD~num
 git reflog
 
 git checkout -- file_xxx
+git rm file_xxx
+
 
 //-----------------------------------------------------------------------------------------------
 //git command tutorials end
