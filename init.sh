@@ -51,6 +51,7 @@ git remote add Origin-AI git@github.com:yuyuqing/AI.git
 git push -u Origin-AI master
 git push Origin-AI master
 git remote -v
+git remote rm Origin-AI
 
 //-----------------------------------------------------------------------------------------------
 //git command tutorials end
