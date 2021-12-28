@@ -139,3 +139,21 @@ gvncviewer ubuntu:0
 
 //-----------------------------------------------------------------------------------------------
 //kvm command tutorials end
+
+
+
+//docker command tutorials begin
+//-----------------------------------------------------------------------------------------------
+
+docker run --name=mynginx -d --restart=always -p 88:80 nginx:1.21.4
+docker stop  mynginx
+docker start mynginx
+docker rm -f mynginx
+docker update mynginx --restart=always
+docker exec -it mynginx /bin/bash
+
+docker commit -a "yuyuqing" -m "modify head page" mynginx nginx_yu:1.21.4
+
+
+//-----------------------------------------------------------------------------------------------
+//docker command tutotials end
