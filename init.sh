@@ -68,3 +68,74 @@ git switch -c dev
 //-----------------------------------------------------------------------------------------------
 //git command tutorials end
 
+
+
+//kvm command tutorials begin
+//-----------------------------------------------------------------------------------------------
+virt-install --virt-type=kvm --name=node1 --vcpus 4,cpuset=4-7 -r 4096 \
+             --cputune vcpupin0.vcpu=0,vcpupin0.cpuset=4,vcpupin1.vcpu=1,vcpupin1.cpuset=5,vcpupin2.vcpu=2,vcpupin2.cpuset=6,vcpupin3.vcpu=3,vcpupin3.cpuset=7 \
+             --disk path=/home/node1.qcow2,bus=virtio,size=40 \
+             --network bridge=virbr0,model=virtio \
+             --graphics vnc,listen=0.0.0.0 --noautoconsole --boot hd
+
+virt-install --virt-type=kvm --name=node2 --vcpus 4,cpuset=8-11 -r 4096 \
+             --cputune vcpupin0.vcpu=0,vcpupin0.cpuset=8,vcpupin1.vcpu=1,vcpupin1.cpuset=9,vcpupin2.vcpu=2,vcpupin2.cpuset=10,vcpupin3.vcpu=3,vcpupin3.cpuset=11 \
+             --disk path=/home/node2.qcow2,bus=virtio,size=40 \
+             --network bridge=virbr0,model=virtio \
+             --graphics vnc,listen=0.0.0.0 --noautoconsole --boot hd
+
+virt-install --virt-type=kvm --name=node3 --vcpus 4,cpuset=12-15 -r 4096 \
+             --cputune vcpupin0.vcpu=0,vcpupin0.cpuset=12,vcpupin1.vcpu=1,vcpupin1.cpuset=13,vcpupin2.vcpu=2,vcpupin2.cpuset=14,vcpupin3.vcpu=3,vcpupin3.cpuset=15 \
+             --disk path=/home/node3.qcow2,bus=virtio,size=40 \
+             --network bridge=virbr0,model=virtio \
+             --graphics vnc,listen=0.0.0.0 --noautoconsole --boot hd
+
+//===============================================================================================
+virt-install --virt-type=kvm --name=node1 --vcpus 4,cpuset=4-7 -r 4096 \
+             --cputune vcpupin0.vcpu=0,vcpupin0.cpuset=4,vcpupin1.vcpu=1,vcpupin1.cpuset=5,vcpupin2.vcpu=2,vcpupin2.cpuset=6,vcpupin3.vcpu=3,vcpupin3.cpuset=7 \
+			 --numa node,nodeid=0,cpus=0-1,mem=2048 --numa node,nodeid=1,cpus=2-3,mem=2048 \
+             --disk path=/home/node1.qcow2,bus=virtio,size=40 \
+             --network bridge=virbr0,model=virtio \
+             --graphics vnc,listen=0.0.0.0 --noautoconsole --boot hd
+//===============================================================================================
+
+ovs-vsctl add-br c-br
+ovs-vsctl add-br d-br
+
+ifconfig c-br 172.100.20.1/24
+ifconfig d-br 172.100.30.1/24
+
+ifconfig c-br up
+ifconfig d-br up
+
+virsh net-define virsh-c-net.xml
+virsh net-define virsh-d-net.xml
+virsh net-start m-net
+virsh net-start m-net
+
+
+virt-install --virt-type=kvm --name=node1 --vcpus 4,cpuset=4-7 -r 4096 \
+             --cputune vcpupin0.vcpu=0,vcpupin0.cpuset=4,vcpupin1.vcpu=1,vcpupin1.cpuset=5,vcpupin2.vcpu=2,vcpupin2.cpuset=6,vcpupin3.vcpu=3,vcpupin3.cpuset=7 \
+             --disk path=/home/node1.qcow2,bus=virtio,size=40 \
+             --network bridge=virbr0,model=virtio --network network=c-net,model=virtio --network network=d-net,model=virtio \
+             --graphics vnc,listen=0.0.0.0 --noautoconsole --boot hd
+
+virt-install --virt-type=kvm --name=node2 --vcpus 4,cpuset=8-11 -r 4096 \
+             --cputune vcpupin0.vcpu=0,vcpupin0.cpuset=8,vcpupin1.vcpu=1,vcpupin1.cpuset=9,vcpupin2.vcpu=2,vcpupin2.cpuset=10,vcpupin3.vcpu=3,vcpupin3.cpuset=11 \
+             --disk path=/home/node2.qcow2,bus=virtio,size=40 \
+             --network bridge=virbr0,model=virtio --network network=c-net,model=virtio --network network=d-net,model=virtio \
+             --graphics vnc,listen=0.0.0.0 --noautoconsole --boot hd
+
+virt-install --virt-type=kvm --name=node3 --vcpus 4,cpuset=12-15 -r 4096 \
+             --cputune vcpupin0.vcpu=0,vcpupin0.cpuset=12,vcpupin1.vcpu=1,vcpupin1.cpuset=13,vcpupin2.vcpu=2,vcpupin2.cpuset=14,vcpupin3.vcpu=3,vcpupin3.cpuset=15 \
+             --disk path=/home/node3.qcow2,bus=virtio,size=40 \
+             --network bridge=virbr0,model=virtio --network network=c-net,model=virtio --network network=d-net,model=virtio \
+             --graphics vnc,listen=0.0.0.0 --noautoconsole --boot hd
+
+gvncviewer ubuntu:0
+
+//===============================================================================================
+
+
+//-----------------------------------------------------------------------------------------------
+//kvm command tutorials end
