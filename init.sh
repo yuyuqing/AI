@@ -153,6 +153,12 @@ docker update mynginx --restart=always
 docker exec -it mynginx /bin/bash
 
 docker commit -a "yuyuqing" -m "modify head page" mynginx nginx_yu:1.21.4
+docker save -o test_nginx.tar nginx:1.21.4
+docker load -i test_nginx.tar
+
+docker login
+docker logout
+
 
 
 //-----------------------------------------------------------------------------------------------
