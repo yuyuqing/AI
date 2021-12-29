@@ -151,6 +151,9 @@ docker start mynginx
 docker rm -f mynginx
 docker update mynginx --restart=always
 docker exec -it mynginx /bin/bash
+docker logs mynginx
+docker cp mynginx:/etc/nginx/nginx.conf /home/wrk3/k8s/data/nginx/nginx.conf
+docker cp /home/wrk3/k8s/data/nginx/nginx.conf mynginx:/etc/nginx/nginx.conf
 
 docker commit -a "yuyuqing" -m "modify head page" mynginx nginx_yu:1.21.4
 docker save -o test_nginx.tar nginx:1.21.4
@@ -159,7 +162,7 @@ docker load -i test_nginx.tar
 docker login
 docker logout
 
-
+docker run --name=mynginx -d --restart=always -p 88:80 -v /home/wrk3/k8s/data/html:/usr/share/nginx/html:rw nginx:1.21.4
 
 //-----------------------------------------------------------------------------------------------
 //docker command tutotials end
