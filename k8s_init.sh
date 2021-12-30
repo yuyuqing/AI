@@ -31,10 +31,37 @@ chown $(id -u):$(id -g) $HOME/.kube/config
 
 export KUBECONFIG=/etc/kubernetes/admin.conf
 
+curl -L --remote-name-all https://github.com/cilium/cilium-cli/releases/latest/download/cilium-linux-amd64.tar.gz{,.sha256sum}
+sha256sum --check cilium-linux-amd64.tar.gz.sha256sum
+sudo tar xzvfC cilium-linux-amd64.tar.gz /usr/local/bin
+rm cilium-linux-amd64.tar.gz{,.sha256sum}
 
 kubectl get nodes
 kubectl get pods -A
 
 kubectl taint nodes --all node-role.kubernetes.io/master-
 
+
+//helm tutorials begin
+//-----------------------------------------------------------------------------------------------------------------------------
+
+helm repo add stable https://charts.helm.sh/stable
+helm repo add azure http://mirror.azure.cn/kubernetes/charts/
+helm repo remove azure
+helm repo list
+helm repo update
+
+//-----------------------------------------------------------------------------------------------------------------------------
+//helm tutorials end
+
+
+
+//cilium tutorials begin
+//-----------------------------------------------------------------------------------------------------------------------------
+mount bpffs /sys/fs/bpf -t bpf
+
+curl -LO https://raw.githubusercontent.com/cilium/cilium/v1.10/Documentation/gettingstarted/kind-config.yaml
+
+//-----------------------------------------------------------------------------------------------------------------------------
+//cilium tutorials end
 
