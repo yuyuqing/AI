@@ -73,6 +73,11 @@ helm repo add cilium https://helm.cilium.io/
 helm repo remove azure
 helm repo list
 helm repo update
+helm search repo weave
+helm install ui stable/weave-scope
+helm status ui
+helm list
+
 
 helm install cilium cilium/cilium --version 1.11.0 --namespace kube-system
 
