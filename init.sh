@@ -45,6 +45,7 @@ git reset --hadr HEAD~num
 git reflog
 
 git checkout -- file_xxx
+git checkout -- *
 git rm file_xxx
 
 ssh-keygen -t  rsa -C "lvyijiu@icloud.com"
