@@ -10,6 +10,7 @@ conda info --env
 conda env remove d2l-zh
 conda create -n -y d2l-zh python=3.8 pip
 conda activate d2l-zh
+conda update --all
 
 pip install jupyter d2l torch torchvision
 
