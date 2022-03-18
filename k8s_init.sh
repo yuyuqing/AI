@@ -49,6 +49,7 @@ kubectl get nodes
 kubectl get pods -A
 
 kubectl taint nodes --all node-role.kubernetes.io/master-
+kubeadm token create --print-join-command
 
 kubeadm reset
 systemctl stop kubelet
